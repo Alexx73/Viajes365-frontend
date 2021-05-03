@@ -1,0 +1,81 @@
+Firebase Commands
+
+- Install Firebase CLI
+    npm install -g firebase-tools
+
+- Firebase CLI Login
+    firebase login
+    (you can login with your gmail account)
+
+
+- Firebase CLI setup
+Para inicializar un proyecto de Firebase nuevo, ejecuta el siguiente comando
+ desde el directorio de tu app:
+
+    firebase init
+
+    Nota: El comando firebase init no crea un directorio nuevo. 
+    Si estás iniciando una app nueva, primero debes crear un directorio y, 
+    luego, ejecutar firebase init desde ese directorio.
+
+Al final de la inicialización, Firebase crea y agrega automáticamente un directorio, public, y 
+dos archivos a la raíz del directorio local de apps:
+
+    Un archivo de configuración firebase.json que contiene la configuración del proyecto
+
+    Un archivo .firebaserc en el que se almacenan los alias del proyecto
+
+    El directorio public contiene todos los archivos que se van a subir a Firebase.
+
+
+Apareceran varias opciones en pantalla: Database, Firestore, Function, Hosting, etc 
+    Seleccionar Hosting y presionar Enter.
+
+
+Aparecera el mensaje "please select an option"
+        Seleccionar "Create a New Project" (si es un proyecto nuevo).
+
+
+Aparecera el mensaje "please specify a unique project id"
+        ahora debemos ingresar el nombre del proyecto (este nombre no se puede cambiar).
+
+
+Aparecera el mensaje "What would you like to call your project"
+        aca podemos elegir un alias para nuestro proyecto 
+        (si presionamos enter sin ingresar nada tomara el nombre del proyecto).
+
+
+Ahora demorara unos segundos, ya que está creando el proyecto en la nube.
+
+
+Aparecera el mensaje "What do you want to use as your public directory"
+        presionamos enter y public será seleccionado como el directorio para los archivos del deployment
+
+Aparecera el mensaje "Congifure as a single-page app?"
+        presionamos y, luego enter.
+
+
+Ahora aparecera el mensaje "Set up automatic builds and deploys with github"
+        presionamos n, luego enter.
+
+y luego de unos segundos, finaliza la inicialización del proyecto.
+
+
+Ahora tenemos que abrir el archivo angular.json, y tenemos que buscar la opcion
+"outputpath": y cambiar lo que está a la derecha de outputpath por "public".
+aca le decimos a angular que cuando ejecutemos "ng build --prod", use la carpeta 
+'public' como destino.
+
+
+Ahora ejecutamos el comando:
+ng build --prod
+
+
+Y luego ejecutamos :
+
+firebase deploy
+
+    Al ejecutar este comando en la consola, todos los archivos en la carpeta 'public'
+    serán subidos a la nube, deployment. Demorará unos segundos y nos mostrará el link
+    de nuestra app, eso quiere decir que terminamos y el proyecto está en linea.
+
