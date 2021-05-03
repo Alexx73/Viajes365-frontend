@@ -1,0 +1,24 @@
+<form [formGroup]="cityForm">
+
+  <div class="row ">
+      <div class="col-7"> <select formControlName="city" (change)="cityChange($event)">
+
+          <!-- <option value="0">Elegí la Ciudad</option> -->
+          <option *ngFor="let city of citiesCollection" [ngValue]="city.cityId">
+            {{ city.name}}
+          </option>
+        </select>
+      </div>
+
+      <div class="col" *ngIf="weatherIconUrl">
+        <ng-template #tipContent>
+          <p>{{ currentStatus }}</p>
+          <p> Humedad: {{ currentHumidity }} {{ currentHumidityUnit }}</p>
+          <p> Presión: {{currentPressure }} {{ currentPressureUnit }}</p>
+        </ng-template>
+        <img [src]="weatherIconUrl" width="24px" height="24px" alt="Foto" [ngbTooltip]="tipContent" placement="bottom">
+        <small>{{ currentTemperature }}{{ currentTempUnit }}</small>
+      </div>
+  </div>
+
+</form>

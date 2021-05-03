@@ -1,0 +1,24 @@
+<!-- navbar container -->
+<app-navbar></app-navbar>
+
+<!-- main app container -->
+<div class="app-container"
+  style="background: linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.8)), url(./assets/images/tile_pattern.jpg); padding-bottom: 50px">
+  <alert></alert>
+  <router-outlet></router-outlet>
+</div>
+
+<!-- footer -->
+<footer>
+
+<p>Descargate nuestra App</p>
+
+<button class="btn btn-info mb-3" type="submit" 
+onclick="window.open('./assets/images/viajes 365.apk')">Descargar</button>
+
+<br>
+  <p>ISPC FullStack &copy;
+    
+    2021 | <a routerLink="/termsandconditions" routerLinkActive="active">Términos y Condiciones</a></p>
+
+</footer>
