@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '@app/_models';
 import { AlertService } from '@app/_services';
-import { AccountService } from '@app/_services/account.service';
+import { AccountService } from '@app/_services';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     private alertService: AlertService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.form = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   // convenience getter for easy access to form fields
   get f() { return this.form.controls; }
 
-  onSubmit() {
+  onSubmit(): void {
     this.submitted = true;
 
     // reset alerts on submit
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl(returnUrl);
         },
         error: error => {
-          this.alertService.error(error);
+          // this.alertService.error('Usuario y/o clave incorrectos');
           this.loading = false;
         }
       });

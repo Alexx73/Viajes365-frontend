@@ -352,3 +352,24 @@ footer {
     padding-left: calc(var(--nav-width) + 188px)
   }
 }
+
+// Image Cropper
+image-cropper {
+  height: 25vh;
+  outline-color: darkslategray;
+  outline-style: dashed;
+}
+
+
+//responsive sidebar
+.l-sidebar.col {
+  margin-left: 15%;
+}
+
+.l-sidebar.card {
+  overflow-wrap: normal;
+}
+
+.l-sidebar.card-body {
+  padding: 0%;
+}

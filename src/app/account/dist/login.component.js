@@ -48,11 +48,11 @@ var LoginComponent = /** @class */ (function () {
             next: function (u) {
                 // get return url from query parameters or default to home page
                 var returnUrl = u.returnUrl || '/';
-                console.log(u.returnUrl);
+                //console.log(u.returnUrl);
                 _this.router.navigateByUrl(returnUrl);
             },
             error: function (error) {
-                _this.alertService.error(error);
+                // this.alertService.error('Usuario y/o clave incorrectos');
                 _this.loading = false;
             }
         });

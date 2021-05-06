@@ -7,7 +7,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'apiclima',
   templateUrl: './apiclima.component.html',
-
 })
 export class ApiclimaComponent implements OnInit {
 
@@ -66,7 +65,7 @@ export class ApiclimaComponent implements OnInit {
           this.currentStatus = weather.hours[0].text;
           this.currentHumidity = weather.hours[0].humidity;
           this.currentPressure = weather.hours[0].pressure;
-          // weather icons are already in our assets folder        
+          // weather icons are already in our assets folder
           this.weatherIconUrl = 'assets/images/icons/tutiempo/wi/' + this.weatherIconUrl + '.png';
         })
     }
@@ -87,10 +86,3 @@ export class ApiclimaComponent implements OnInit {
     this.cityQuery(initialCityId);
   }
 }
-
-
-
-
-
-
-

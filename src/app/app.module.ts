@@ -16,6 +16,7 @@ import { NavbarComponent } from './_components/navbar.component';
 import { TermsAndConditionsComponent } from './home/terms-and-conditions/terms-and-conditions.component';
 import { ApiclimaComponent } from './_components/apiclima.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxFilesizeModule } from 'ngx-filesize';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    NgxFilesizeModule,
   ],
   declarations: [
     AppComponent,
@@ -32,7 +34,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     NavbarComponent,
     TermsAndConditionsComponent,
-    ApiclimaComponent
+    ApiclimaComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -41,6 +43,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     // provider used to create fake backend
     // fakeBackendProvider
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { };
+export class AppModule {}

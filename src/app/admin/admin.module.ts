@@ -4,11 +4,15 @@ import { LayoutComponent } from './layout.component';
 import { DashboardComponent } from './dashboard.component';
 import { SidebarComponent } from './sidebar.component';
 import { AdminRoutingModule } from './admin-routing.module';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [LayoutComponent, DashboardComponent, SidebarComponent],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    NgxPaginationModule,
+    FormsModule
   ]
 })
 export class AdminModule { }

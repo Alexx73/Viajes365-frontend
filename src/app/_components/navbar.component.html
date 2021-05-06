@@ -1,149 +1,144 @@
-
-
 <!-- navbar anonymous -->
 
 <nav class="navbar navbar-expand-lg navbar-custom float-left" *ngIf="!user.userId">
-    <div class="container-fluid">
-        <!-- <a class="navbar-brand" href="#"><img class="navbar-logo filter-logo" src="../assets/images/logo_viajes_365.svg"
-                alt="logo 365" width="32" height="32" title="Logo Viajes 365"></a> -->
-        <button class="custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse pull-left" id="navbarScroll">
-            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                <li class="nav-item ">
-                    <a class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"
-                        [routerLinkActiveOptions]="{exact: true}"><i class="bi-house-fill"
-                            style="color: white; margin-right: 8px;"></i>Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/register" routerLinkActive="active"><i class="bi-person-plus-fill"
-                            style="color: white; margin-right: 8px;"></i>Registrarse</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/login" routerLinkActive="active"><i class="bi-door-open-fill"
-                            style="color: white; margin-right: 8px;"></i>Ingresar</a>
-                </li>
+  <div class="container-fluid">
+    <!-- <a class="navbar-brand" href="#"><img class="navbar-logo filter-logo" src="../assets/images/logo_viajes_365.svg"
+              alt="logo 365" width="32" height="32" title="Logo Viajes 365"></a> -->
+    <button class="custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+      aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse pull-left" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item ">
+          <a class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"><i class="bi-house-fill"
+              style="color: white; margin-right: 8px;"></i>Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register" routerLinkActive="active"><i class="bi-person-plus-fill"
+              style="color: white; margin-right: 8px;"></i>Registrarse</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login" routerLinkActive="active"><i class="bi-door-open-fill"
+              style="color: white; margin-right: 8px;"></i>Ingresar</a>
+        </li>
 
-                <li class="nav-item">
-                    <!-- <img src="https://v5i.tutiempo.net/wi/02/40/2n.png" alt="" srcset=""> -->
-                <!-- www.tutiempo.net - Ancho:477px - Alto:91px -->
-                    <!-- <div id="TT_FyN1E1k1kSQBnFGK7fzzjDzzzWlKLKr2rt1YEsCoKkzo35mom">El tiempo - Tutiempo.net</div>
-                    <script type="text/javascript" 
-                    src="https://www.tutiempo.net/s-widget/l_FyN1E1k1kSQBnFGK7fzzjDzzzWlKLKr2rt1YEsCoKkzo35mom"></script> -->
+        <li class="nav-item">
+          <!-- <img src="https://v5i.tutiempo.net/wi/02/40/2n.png" alt="" srcset=""> -->
+          <!-- www.tutiempo.net - Ancho:477px - Alto:91px -->
+          <!-- <div id="TT_FyN1E1k1kSQBnFGK7fzzjDzzzWlKLKr2rt1YEsCoKkzo35mom">El tiempo - Tutiempo.net</div>
+                  <script type="text/javascript" 
+                  src="https://www.tutiempo.net/s-widget/l_FyN1E1k1kSQBnFGK7fzzjDzzzWlKLKr2rt1YEsCoKkzo35mom"></script> -->
 
-                </li>   
+        </li>
 
 
-                
-                 <li class="nav-item ms-4">
-                    <form class="d-flex">
-                        <input class="form-control me-2 my-1" type="search" placeholder="tu consulta aquí..."
-                            aria-label="Buscar">
-                        <button class="btn btn-success my-1" type="submit"><span style="display:inline-flex"><i
-                                    class="bi-search px-3" style="color: white; margin-right: 3px;"></i></span></button>
-                    </form>
 
-                </li>
-            </ul>
-            
-            <span class="float-right blanco me-3 pt-3">
-                <apiclima class="me-1"></apiclima>           
-            </span>      
+        <li class="nav-item ms-4">
+          <form class="d-flex">
+            <input class="form-control me-2 my-1" type="search" placeholder="tu consulta aquí..." aria-label="Buscar">
+            <button class="btn btn-success my-1" type="submit"><span style="display:inline-flex"><i
+                  class="bi-search px-3" style="color: white; margin-right: 3px;"></i></span></button>
+          </form>
 
-        </div>
-    </div>   
+        </li>
+      </ul>
+
+      <span class="float-right blanco me-3 pt-3">
+        <apiclima class="me-1"></apiclima>
+      </span>
+
+    </div>
+  </div>
 </nav>
 
 
 
 <!-- navbar user -->
 <nav class="navbar navbar-expand-lg navbar-custom" *ngIf="user.role?.roleId == 1">
-    <div class="container-fluid">
-        <!-- <a class="navbar-brand" href="#"><img class="navbar-logo filter-logo" src="../assets/images/logo_viajes_365.svg"
-                alt="logo 365" width="32" height="32" title="Logo Viajes 365">Viajes 365</a> -->
-        <button class="custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarScroll">
-            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"
-                        [routerLinkActiveOptions]="{exact: true}"><i class="bi-house-fill"
-                            style="color: white; margin-right: 8px;"></i>Inicio</a>
+  <div class="container-fluid">
+    <!-- <a class="navbar-brand" href="#"><img class="navbar-logo filter-logo" src="../assets/images/logo_viajes_365.svg"
+              alt="logo 365" width="32" height="32" title="Logo Viajes 365">Viajes 365</a> -->
+    <button class="custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+      aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"><i class="bi-house-fill"
+              style="color: white; margin-right: 8px;"></i>Inicio</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false"><i class="bi-stack"
+              style="color: white; margin-right: 8px;"></i>
+            Contenidos
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" routerLink="/tourslist" routerLinkActive="active"><i
+                  class="bi-signpost-split-fill" style="color: black; margin-right: 8px;"></i>Tours</a></li>
+            <li><a class="dropdown-item" routerLink="/attractionslist" routerLinkActive="active"><i class="bi-geo-fill"
+                  style="color: black; margin-right: 8px;"></i>Atracciones</a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#"><i class="bi-images"
+                  style="color: black; margin-right: 8px;"></i>Galería</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/topicslist" routerLinkActive="active"><i class="bi-megaphone-fill"
+              style="color: white; margin-right: 8px;"></i>Foro</a>
+        </li>
+
+        <li class="navitem ms-5 ps-4">
+          <ul class="navbar-nav ms-5  my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false"><i class="bi-person-circle"
+                  style="color: white; margin-right: 8px;"></i>
+                {{user.role.roleName}}: {{user.firstName}} {{user.lastName}}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                <li><a class="dropdown-item" routerLink="../users/edit/{{user.userId}}" routerLinkActive="active"><i
+                      class="bi-person-lines-fill" style="color: black; margin-right: 8px;"></i>Mi
+                    Perfil</a></li>
+                <!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
+                <li>
+                  <hr class="dropdown-divider">
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false"><i class="bi-stack"
-                            style="color: white; margin-right: 8px;"></i>
-                        Contenidos
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                        <li><a class="dropdown-item" routerLink="/tourslist" routerLinkActive="active"><i
-                                    class="bi-signpost-split-fill"
-                                    style="color: black; margin-right: 8px;"></i>Tours</a></li>
-                        <li><a class="dropdown-item" routerLink="/attractionslist" routerLinkActive="active"><i
-                                    class="bi-geo-fill" style="color: black; margin-right: 8px;"></i>Atracciones</a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#"><i class="bi-images"
-                                    style="color: black; margin-right: 8px;"></i>Galería</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/topicslist" routerLinkActive="active"><i class="bi-megaphone-fill"
-                            style="color: white; margin-right: 8px;"></i>Foro</a>
-                </li>
+                <li><a class="dropdown-item" (click)="logout()"><i class="bi-door-closed-fill"
+                      style="color: black; margin-right: 8px;"></i>Salir</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
 
-                <li class="navitem ms-5 ps-4">
-                    <ul class="navbar-nav ms-5  my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false"><i class="bi-person-circle"
-                                    style="color: white; margin-right: 8px;"></i>
-                                {{user.role.roleName}}: {{user.firstName}} {{user.lastName}}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                                <li><a class="dropdown-item" routerLink="../users/edit/{{user.userId}}"
-                                        routerLinkActive="active"><i class="bi-person-lines-fill"
-                                            style="color: black; margin-right: 8px;"></i>Mi
-                                        Perfil</a></li>
-                                <!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" (click)="logout()"><i class="bi-door-closed-fill"
-                                            style="color: black; margin-right: 8px;"></i>Salir</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+        <!-- <li class="nav-item">
+                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Link</a>
+              </li> -->
+      </ul>
+      <div class="d-flex">
 
-                <!-- <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Link</a>
-                </li> -->
-            </ul>
-            <div class="d-flex">
-                
-                <!-- <form class="d-flex">
-                    <input class="form-control me-2 my-1" type="search" placeholder="tu consulta aquí..."
-                        aria-label="Buscar">
-                    <button class="btn btn-outline-success my-1" type="submit"><span style="display:inline-flex"><i
-                                class="bi-search" style="color: white; margin-right: 8px;"></i>Buscar</span></button>
-                </form> -->
+        <!-- <form class="d-flex">
+                  <input class="form-control me-2 my-1" type="search" placeholder="tu consulta aquí..."
+                      aria-label="Buscar">
+                  <button class="btn btn-outline-success my-1" type="submit"><span style="display:inline-flex"><i
+                              class="bi-search" style="color: white; margin-right: 8px;"></i>Buscar</span></button>
+              </form> -->
 
 
-                <span class="float-right blanco  me-3 pt-3">
-                    <apiclima class="me-1"></apiclima>           
-                </span>   
+        <span class="float-right blanco  me-3 pt-3">
+          <apiclima class="me-1"></apiclima>
+        </span>
 
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </nav>
 
 
@@ -151,128 +146,127 @@
 
 <!-- navbar admin -->
 <nav class="navbar navbar-expand-lg navbar-custom" *ngIf="user.role?.roleId == 2">
-    <div class="container-fluid">
-        <!-- <a class="navbar-brand" href="#"><img class="navbar-logo filter-logo" src="../assets/images/logo_viajes_365.svg"
-                alt="logo 365" title="Logo Viajes 365">Viajes 365</a> -->
-        <button class="custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarScroll">
-            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/admin/dashboard"
-                        routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="bi-grid-1x2-fill"
-                            style="color: white; margin-right: 8px;"></i>Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"
-                        [routerLinkActiveOptions]="{exact: true}"><i class="bi-house-fill"
-                            style="color: white; margin-right: 8px;"></i>Inicio</a>
-                </li>
+  <div class="container-fluid">
+    <!-- <a class="navbar-brand" href="#"><img class="navbar-logo filter-logo" src="../assets/images/logo_viajes_365.svg"
+              alt="logo 365" title="Logo Viajes 365">Viajes 365</a> -->
+    <button class="custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+      aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/admin/dashboard" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"><i class="bi-grid-1x2-fill"
+              style="color: white; margin-right: 8px;"></i>Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"><i class="bi-house-fill"
+              style="color: white; margin-right: 8px;"></i>Inicio</a>
+        </li>
 
-                <!-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false"><i class="bi-diagram-3-fill"
-                            style="color: white; margin-right: 8px;"></i>
-                        Entidades
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                        <li><a class="dropdown-item" routerLink="/userslist" routerLinkActive="active"><i
-                                    class="bi-people-fill" style="color: black; margin-right: 8px;"></i>Usuarios</a>
-                        </li>
-                        <li><a class="dropdown-item" routerLink="/roleslist" routerLinkActive="active"><i
-                                    class="bi-tags-fill" style="color: black; margin-right: 8px;"></i>Roles</a>
-                        </li>
-                        <li><a class="dropdown-item" routerLink="/tourslist" routerLinkActive="active"><i
-                                    class="bi-cursor-fill" style="color: black; margin-right: 8px;"></i>Tours</a></li>
-                        <li><a class="dropdown-item" routerLink="/attractionslist" routerLinkActive="active"><i
-                                    class="bi-camera-fill" style="color: black; margin-right: 8px;"></i>Atracciones</a>
-                        </li>
-                        <li><a class="dropdown-item" routerLink="/attractionslist" routerLinkActive="active"><i
-                                    class="bi-geo-alt-fill" style="color: black; margin-right: 8px;"></i>Locaciones</a>
-                        </li>
-                        <li>
-                        <li><a class="dropdown-item" routerLink="/attractionslist" routerLinkActive="active"><i
-                                    class="bi-cloud-fill" style="color: black; margin-right: 8px;"></i>Clima</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#"><i class="bi-images"
-                                    style="color: black; margin-right: 8px;"></i>Galería</a></li>
-                    </ul>
+        <!-- <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                      data-bs-toggle="dropdown" aria-expanded="false"><i class="bi-diagram-3-fill"
+                          style="color: white; margin-right: 8px;"></i>
+                      Entidades
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                      <li><a class="dropdown-item" routerLink="/userslist" routerLinkActive="active"><i
+                                  class="bi-people-fill" style="color: black; margin-right: 8px;"></i>Usuarios</a>
+                      </li>
+                      <li><a class="dropdown-item" routerLink="/roleslist" routerLinkActive="active"><i
+                                  class="bi-tags-fill" style="color: black; margin-right: 8px;"></i>Roles</a>
+                      </li>
+                      <li><a class="dropdown-item" routerLink="/tourslist" routerLinkActive="active"><i
+                                  class="bi-cursor-fill" style="color: black; margin-right: 8px;"></i>Tours</a></li>
+                      <li><a class="dropdown-item" routerLink="/attractionslist" routerLinkActive="active"><i
+                                  class="bi-camera-fill" style="color: black; margin-right: 8px;"></i>Atracciones</a>
+                      </li>
+                      <li><a class="dropdown-item" routerLink="/attractionslist" routerLinkActive="active"><i
+                                  class="bi-geo-alt-fill" style="color: black; margin-right: 8px;"></i>Locaciones</a>
+                      </li>
+                      <li>
+                      <li><a class="dropdown-item" routerLink="/attractionslist" routerLinkActive="active"><i
+                                  class="bi-cloud-fill" style="color: black; margin-right: 8px;"></i>Clima</a></li>
+                      <li>
+                          <hr class="dropdown-divider">
+                      </li>
+                      <li><a class="dropdown-item" href="#"><i class="bi-images"
+                                  style="color: black; margin-right: 8px;"></i>Galería</a></li>
+                  </ul>
+              </li> -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/topicslist" routerLinkActive="active"><i class="bi-megaphone-fill"
+              style="color: white; margin-right: 8px;"></i>Foro</a>
+        </li>
+
+        <li class="nav-item ms-5 ps-4">
+          <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false"><i class="bi-person-circle"
+                  style="color: white; margin-right: 8px;"></i>
+                {{user.role.roleName}}: {{user.firstName}} {{user.lastName}}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                <li><a class="dropdown-item" routerLink="../users/edit/{{user.userId}}" routerLinkActive="active"><i
+                      class="bi-person-lines-fill" style="color: black; margin-right: 8px;"></i>Mi
+                    Perfil</a></li>
+                <!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" (click)="logout()"><i class="bi-door-closed-fill"
+                      style="color: black; margin-right: 8px;"></i>Salir</a></li>
+              </ul>
+            </li>
+          </ul>
+
+        </li>
+
+        <!-- <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Link</a>
                 </li> -->
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/topicslist" routerLinkActive="active"><i class="bi-megaphone-fill"
-                            style="color: white; margin-right: 8px;"></i>Foro</a>
-                </li>
+      </ul>
 
-                <li class="nav-item ms-5 ps-4">
-                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false"><i class="bi-person-circle"
-                                    style="color: white; margin-right: 8px;"></i>
-                                {{user.role.roleName}}: {{user.firstName}} {{user.lastName}}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                                <li><a class="dropdown-item" routerLink="../users/edit/{{user.userId}}"
-                                        routerLinkActive="active"><i class="bi-person-lines-fill"
-                                            style="color: black; margin-right: 8px;"></i>Mi
-                                        Perfil</a></li>
-                                <!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" (click)="logout()"><i class="bi-door-closed-fill"
-                                            style="color: black; margin-right: 8px;"></i>Salir</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    
-                </li>
+      <span class="float-right blanco me-3 pt-3">
+        <apiclima class="me-1"></apiclima>
+      </span>
+      <div class="d-flex">
 
-                <!-- <li class="nav-item">
-                      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Link</a>
-                  </li> -->
-            </ul>
-
-            <span class="float-right blanco me-3 pt-3">
-                <apiclima class="me-1"></apiclima>           
-            </span>      
-            <div class="d-flex">
-                
-                <!-- <form class="d-flex">
-                    <input class="form-control me-2 my-1" type="search" placeholder="tu consulta aquí..."
-                        aria-label="Buscar">
-                    <button class="btn btn-outline-success my-1" type="submit"><span style="display:inline-flex"><i
-                                class="bi-search" style="color: white; margin-right: 8px;"></i>Buscar</span></button>
-                </form> -->
-            </div>
-        </div>
+        <!-- <form class="d-flex">
+                  <input class="form-control me-2 my-1" type="search" placeholder="tu consulta aquí..."
+                      aria-label="Buscar">
+                  <button class="btn btn-outline-success my-1" type="submit"><span style="display:inline-flex"><i
+                              class="bi-search" style="color: white; margin-right: 8px;"></i>Buscar</span></button>
+              </form> -->
+      </div>
     </div>
+  </div>
 </nav>
 
 
 
 <!-- <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user.userId">
-      <div class="navbar-nav">
-          <a class="nav-item nav-link" routerLink="/" routerLinkActive="active"
-              [routerLinkActiveOptions]="{exact: true}">Inicio</a>
-          <a class="nav-item nav-link" routerLink="/userslist" routerLinkActive="active">Usuarios</a>
-          <a class="nav-item nav-link" routerLink="../users/edit/{{user.userId}}"
-              routerLinkActive="active">{{user.role.roleName}}:
-              {{user.firstName}}
-              {{user.lastName}}</a>
-          <a class="nav-item nav-link" (click)="logout()">Salir</a>
-      </div>
-  </nav>
-  
-  <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="!user.userId">
-      <div class="navbar-nav">
-          <a class="nav-item nav-link" routerLink="/" routerLinkActive="active"
-              [routerLinkActiveOptions]="{exact: true}">Inicio</a>
-          <a class="nav-item nav-link" routerLink="/register" routerLinkActive="active">Registrarse</a>
-          <a class="nav-item nav-link" routerLink="/login" routerLinkActive="active">Ingresar</a>
-      </div>
-  </nav> -->
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+        <a class="nav-item nav-link" routerLink="/userslist" routerLinkActive="active">Usuarios</a>
+        <a class="nav-item nav-link" routerLink="../users/edit/{{user.userId}}"
+            routerLinkActive="active">{{user.role.roleName}}:
+            {{user.firstName}}
+            {{user.lastName}}</a>
+        <a class="nav-item nav-link" (click)="logout()">Salir</a>
+    </div>
+</nav>
+
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="!user.userId">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+        <a class="nav-item nav-link" routerLink="/register" routerLinkActive="active">Registrarse</a>
+        <a class="nav-item nav-link" routerLink="/login" routerLinkActive="active">Ingresar</a>
+    </div>
+</nav> -->

@@ -1,0 +1,429 @@
+/* You can add global styles to this file, and also import other style files */
+/* Importing Bootstrap SCSS file. */
+@font-face {
+  font-family: "TitilliumWeb Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("TitilliumWeb-Regular.ttf");
+}
+@font-face {
+  font-family: "Titillium Light";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Titillium Light"), url("TitilliumWeb-Light.ttf") format("ttf");
+}
+@font-face {
+  font-family: "Titillium Light Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Titillium Light Italic"), url("TitilliumWeb-LightItalic.ttf") format("ttf");
+}
+@font-face {
+  font-family: "Titillium Semibold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Titillium Semibold"), url("TitilliumWeb-Semibold.ttf") format("ttf");
+}
+@font-face {
+  font-family: "Titillium Semibold Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Titillium Semibold Italic"), url("TitilliumWeb-SemiboldItalic.ttf") format("ttf");
+}
+@font-face {
+  font-family: "TitilliumWeb Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: url("TitilliumWeb-Bold.ttf");
+}
+@font-face {
+  font-family: "Titillium Bold Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Titillium Bold Italic"), url("TitilliumWeb-BoldItalic.ttf") format("ttf");
+}
+@font-face {
+  font-family: "Titillium";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Titillium"), url("TitilliumWeb-Black.ttf") format("ttf");
+}
+@font-face {
+  font-family: Montserrat;
+  src: url("Montserrat-Light.ttf");
+  font-display: swap;
+  font-weight: 300;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url("Montserrat-Light.ttf");
+  font-display: swap;
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url("Montserrat-Regular.ttf");
+  font-display: swap;
+  font-weight: 400;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url("Montserrat-RegularItalic.ttf");
+  font-display: swap;
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url("Montserrat-SemiBold.ttf");
+  font-display: swap;
+  font-weight: 600;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url("Montserrat-SemiBoldItalic.ttf");
+  font-display: swap;
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url("Montserrat-Bold.ttf");
+  font-display: swap;
+  font-weight: 700;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url("Montserrat-BoldItalic.ttf");
+  font-display: swap;
+  font-weight: 700;
+  font-style: italic;
+}
+body {
+  background: #5a5a5a;
+  font-family: Montserrat;
+}
+
+.blanco {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+a {
+  color: aqua;
+  font-size: 1rem;
+}
+
+a:hover {
+  color: white;
+}
+
+.navbar-custom {
+  background: linear-gradient(black, rgba(0, 0, 0, 0.45) 99%, rgba(255, 255, 255, 0.4) 1%), url(./assets/images/tile_pattern.jpg);
+  padding-bottom: 2px;
+}
+
+.navbar-custom .navbar-brand {
+  color: rgba(255, 217, 50, 0.966);
+  font-family: TitilliumWeb Bold;
+}
+
+.navbar-custom .navbar-text {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.navbar-custom .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+  color: rgba(255, 217, 50, 0.966);
+}
+
+.custom-toggler {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+@media (min-width: 992px) {
+  .custom-toggler {
+    display: none;
+  }
+}
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.title-custom {
+  color: rgba(255, 217, 50, 0.966);
+  font-family: TitilliumWeb Bold;
+}
+
+.cardtitle-custom {
+  font-family: TitilliumWeb Bold;
+}
+
+footer {
+  text-align: center;
+  color: #b7b7b7;
+  margin-top: 1%;
+}
+
+.header-content {
+  padding: 80px 0 200px 0;
+}
+
+@keyframes zoomin {
+  0% {
+    -webkit-background-size: 100%;
+  }
+  100% {
+    -webkit-background-size: 120%;
+  }
+}
+.content {
+  border-radius: 8px;
+  margin-top: -80px;
+  background: #fff;
+  box-shadow: 0 0 25px -6px rgba(0, 0, 0, 0.9);
+}
+
+.content .left {
+  border-radius: 8px;
+  padding-top: 20px;
+}
+
+.content .right {
+  border-radius: 0px 8px 0px 0px;
+  padding: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .content .right {
+    border-radius: 0px 0px 0px 0px;
+    padding: 0;
+  }
+}
+.text-justify {
+  text-align: justify;
+}
+
+.content .bottom {
+  border-radius: 0px 0px 8px 8px;
+  background: #207520;
+  padding: 20px;
+}
+
+.primary-color {
+  color: #207520;
+}
+
+.navbar-logo {
+  width: 2rem;
+  height: 2rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  margin-right: 0.5rem;
+  margin-left: 0.01rem;
+}
+
+.filter-logo {
+  transition: 300ms linear;
+}
+
+.filter-logo:hover {
+  transform: rotate(360deg);
+  filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(100%) contrast(119%);
+}
+
+.btn-label {
+  position: relative;
+  left: -12px;
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px 0 0 3px;
+}
+
+.btn-labeled {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.btn {
+  margin-bottom: 10px;
+}
+
+:root {
+  --sidebar-first-color: #157347ab;
+  --sidebar-first-color-light: #c2b04a;
+  --sidebar-white-color: #F7F6FB;
+  --z-fixed: 100 ;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+  height: var(--header-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  background-color: var(--sidebar-white-color);
+  z-index: var(--z-fixed);
+  transition: 0.5s;
+}
+
+.header_toggle {
+  color: var(--first-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.header_img {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.header_img img {
+  width: 40px;
+}
+
+.l-sidebar {
+  position: fixed;
+  left: -30%;
+  width: max-content;
+  height: max-content;
+  background-color: var(--sidebar-first-color);
+  padding: 0.5rem 1rem 0 0;
+  transition: 0.5s;
+  border-radius: 0px 8px 8px 0px;
+  z-index: var(--z-fixed);
+}
+
+.side {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.side_logo,
+.side_link {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  column-gap: 1rem;
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  color: orange;
+}
+
+.side_logo {
+  margin-bottom: 2rem;
+}
+
+.side_logo-icon {
+  font-size: 1.25rem;
+  color: var(--sidebar-white-color);
+}
+
+.side_logo-name {
+  color: var(--sidebar-white-color);
+  font-weight: 700;
+}
+
+.side_link {
+  position: relative;
+  color: var(--sidebar-first-color-light);
+  margin-bottom: 1.5rem;
+  transition: 0.3s;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.side_link:hover {
+  color: var(--sidebar-white-color);
+}
+
+.side_icon {
+  font-size: 1.25rem;
+}
+
+.side_name {
+  padding-left: 2px;
+}
+
+.show {
+  left: 0;
+}
+
+.body-pd {
+  padding-left: calc(var(--nav-width) + 1rem);
+}
+
+.side_link.active {
+  color: var(--sidebar-white-color);
+}
+
+.side_link.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 2px;
+  height: 32px;
+  background-color: var(--sidebar-white-color);
+}
+
+.height-100 {
+  height: 100vh;
+}
+
+@media screen and (min-width: 992px) {
+  body {
+    margin: calc(var(--header-height) + 1rem) 0 0 0;
+    padding-left: calc(var(--nav-width) + 2rem);
+  }
+
+  .header {
+    height: calc(var(--header-height) + 1rem);
+    padding: 0 2rem 0 calc(var(--nav-width) + 2rem);
+  }
+
+  .header_img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .header_img img {
+    width: 45px;
+  }
+
+  .l-sidebar {
+    left: 0;
+    padding: 1rem 1rem 0 0;
+  }
+
+  .show {
+    width: calc(var(--nav-width) + 156px);
+  }
+
+  .body-pd {
+    padding-left: calc(var(--nav-width) + 188px);
+  }
+}

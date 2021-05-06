@@ -1,0 +1,126 @@
+﻿<div class="p-4">
+  <div
+    class="container"
+    style="
+      background-color: rgba(255, 255, 255, 0.4);
+      border-radius: 4px;
+      padding: 10px 10px;
+      box-shadow: 0 0 25px -6px rgba(0, 0, 0, 0.9);
+    "
+  >
+    <h4>
+      <i class="bi-people-fill" style="color: black; margin-right: 8px"></i
+      >Usuarios
+    </h4>
+    <hr />
+    <!-- <a routerLink="../add" class="btn btn-sm btn-success mb-2">Agregar Usuario</a> -->
+
+    <!-- CABECERA PAGINADO -->
+    <div class="row">
+      <div class="col text-center">
+        <label>Items por página: </label>
+        <select [(ngModel)]="pagesize" (change)="getPage(1)">
+          <option *ngFor="let item of arrayvalueitemsperpage" [value]="item">
+            {{ item }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <!-- FIN CABECERA PAGINADO -->
+
+    <div style="overflow-x: auto">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th style="width: 30%">Nombre y Apellido</th>
+            <th style="width: 20%">Email</th>
+            <th style="width: 15%">Usuario</th>
+            <th style="width: 15%">Rol</th>
+            <th style="width: 10%">Activo</th>
+            <th style="width: 10%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let user of usersCollection
+                | paginate
+                  : {
+                      itemsPerPage: pagesize,
+                      currentPage: actualpage,
+                      totalItems: totalRegister
+                    }
+            "
+          >
+            <td>{{ user.firstName }}, {{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.userName }}</td>
+            <td>{{ user.role.roleName }}</td>
+            <td>{{ user.active ? "Si" : "No" }}</td>
+            <td style="white-space: nowrap">
+              <a
+                routerLink="../edit/{{ user.userId }}"
+                class="btn btn-sm btn-primary mr-1"
+                ><i
+                  class="bi-pencil-fill"
+                  style="color: white; margin-right: 8px"
+                ></i
+                >Editar</a
+              >
+              <button
+                (click)="deleteUser(user.userId)"
+                class="btn btn-sm btn-danger btn-delete-user"
+                [disabled]="user.isDeleting"
+                *ngIf="user.userId > 1"
+              >
+                <span
+                  *ngIf="user.isDeleting"
+                  class="spinner-border spinner-border-sm"
+                ></span>
+                <span *ngIf="!user.isDeleting"
+                  ><i
+                    class="bi-trash-fill"
+                    style="color: white; margin-right: 8px"
+                  ></i
+                  >Borrar</span
+                >
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="!usersCollection">
+            <td colspan="4" class="text-center">
+              <span
+                class="spinner-border spinner-border-lg align-center"
+              ></span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span class="align-left">
+                <strong class="small">
+                  Total de Registros: {{ page?.totalElements }} | Página
+                  {{ page?.pageNumber }} de {{ page?.totalPages }}
+                </strong>
+              </span>
+            </td>
+            <td colspan="5" class="text-center">
+              <span>
+                <pagination-controls
+                  (pageChange)="getPage($event)"
+                  previousLabel=""
+                  nextLabel=""
+                >
+                </pagination-controls>
+              </span>
+            </td>
+
+            <td>
+              <!-- <pagination-controls (pageChange)="getPage($event)" autoHide="false" responsive="true" previousLabel=""
+                nextLabel=""> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
