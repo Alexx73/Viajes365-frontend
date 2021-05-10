@@ -1,5 +1,6 @@
 export class Role {
     roleId!: number;
     roleName!: string;
-    active!: boolean
+    active!: boolean;
+    isDeleting!: boolean;
 }

@@ -17,7 +17,7 @@ export class RoleService {
         return this.http.get<PaginatedResponse<Role>>(baseUrl);
     }
 
-    getById(id: string): Observable<SingleObjectResponse<Role>> {
+    getById(id: number): Observable<SingleObjectResponse<Role>> {
         return this.http.get<SingleObjectResponse<Role>>(`${baseUrl}/${id}`);
     }
 

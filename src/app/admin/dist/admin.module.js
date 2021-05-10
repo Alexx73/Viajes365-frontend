@@ -23,9 +23,10 @@ var AdminModule = /** @class */ (function () {
             declarations: [layout_component_1.LayoutComponent, dashboard_component_1.DashboardComponent, sidebar_component_1.SidebarComponent],
             imports: [
                 common_1.CommonModule,
+                forms_1.ReactiveFormsModule,
                 admin_routing_module_1.AdminRoutingModule,
                 ngx_pagination_1.NgxPaginationModule,
-                forms_1.FormsModule
+                forms_1.FormsModule,
             ]
         })
     ], AdminModule);

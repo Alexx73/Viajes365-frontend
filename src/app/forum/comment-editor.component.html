@@ -1,0 +1,39 @@
+<div class="p-4">
+  <div class="container" style="
+      background-color: rgba(255, 255, 255, 0.4);
+      border-radius: 4px;
+      padding: 10px 10px;
+      box-shadow: 0 0 25px -6px rgba(0, 0, 0, 0.9);
+    ">
+    <h4>
+      <i class="bi-person-lines-fill" style="color: black; margin-right: 8px"></i>
+      Publica tu comentario sobre {{ topic?.name }}
+    </h4>
+    <editor (onSelectionChange)="showStats()" [(ngModel)]="message" [init]="{
+        base_url: '/tinymce',
+        suffix: '.min',
+        height: 150,
+        menubar: false,
+        language: 'es_MX',
+        language_url: '../../assets/langs/es_MX.js',
+        plugins: [
+          'advlist autolink lists link image charmap print preview anchor',
+          'searchreplace visualblocks code fullscreen',
+          'insertdatetime media table paste code help wordcount',
+          'emoticons'
+        ],
+        toolbar: 'undo redo | bold italic | removeformat | emoticons'
+      }"></editor>
+    Caracteres restantes: {{ chars }}
+    <hr />
+    <div style="text-align: right">
+      <button [disabled]="loading" class="btn btn-primary me-2" (click)="saveComment()">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        <i class="bi-pencil-square" style="color: white; margin-right: 8px"></i>Publicar
+      </button>
+      <button class="btn btn-secondary" (click)="getBack()">
+        <i class="bi-backspace-fill" style="color: white; margin-right: 8px"></i>Cancelar
+      </button>
+    </div>
+  </div>
+</div>

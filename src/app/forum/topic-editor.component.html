@@ -1,0 +1,160 @@
+<div class="p-4">
+  <div
+    class="container"
+    style="
+      background-color: rgba(255, 255, 255, 0.4);
+      border-radius: 4px;
+      padding: 10px 10px;
+      box-shadow: 0 0 25px -6px rgba(0, 0, 0, 0.9);
+    "
+  >
+    <h4 *ngIf="isAddMode">
+      <i class="bi-hash" style="color: black; margin-right: 8px"></i>Agregar
+      Tópico
+    </h4>
+    <h4 *ngIf="!isAddMode">
+      <i class="bi-hash" style="color: black; margin-right: 8px"></i>Editar
+      Tópico
+    </h4>
+    <hr />
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row g-2">
+        <div class="form-group col">
+          <div class="form-floating">
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+              id="name"
+            />
+            <label for="name">Título</label>
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+              <div *ngIf="f.name.errors.required">Título es obligatorio</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row g-2">
+        <div class="form-group col">
+          <div class="form-floating">
+            <input
+              type="text"
+              formControlName="summary"
+              class="form-control"
+              placeholder="Daniela"
+              [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+              id="summary"
+            />
+            <label for="summary">Resumen</label>
+            <div *ngIf="submitted && f.summary.errors" class="invalid-feedback">
+              <div *ngIf="f.summary.errors.required">
+                Resumen es obligatorio
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row g-3">
+        <div class="form-group col">
+          <div class="form-floating">
+            <select
+              formControlName="status"
+              class="form-select"
+              id="status"
+              aria-label="status"
+              (change)="onChangeStatus($event)"
+              [ngClass]="{ 'is-invalid': submitted && f.status.errors }"
+            >
+              <option *ngFor="let status of statuses" value="{{ status }}">
+                {{ status }}
+              </option>
+            </select>
+            <label for="role">Status</label>
+            <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
+              <div *ngIf="f.status.errors.required">Status es obligatorio</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col">
+          <div
+            style="
+              display: block;
+              background-color: rgba(255, 255, 255);
+              border-radius: 4px;
+              padding-left: 0.5rem;
+              padding-top: 0.2rem;
+            "
+          >
+            <label style="color: grey; font-size: small">Fijado</label>
+            <div class="form-check form-switch" style="margin-top: 0.3rem">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                formControlName="pinned"
+                [ngClass]="{ 'is-invalid': submitted && f.pinned.errors }"
+                (change)="pinnedToggle()"
+              />
+              <label class="form-check-label" for="Pinned">{{
+                pinnedLabel
+              }}</label>
+            </div>
+            <div *ngIf="submitted && f.pinned.errors" class="invalid-feedback">
+              <div *ngIf="f.pinned.errors.required">
+                Destacado es obligatorio
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col">
+          <div
+            style="
+              display: block;
+              background-color: rgba(255, 255, 255);
+              border-radius: 4px;
+              padding-left: 0.5rem;
+              padding-top: 0.2rem;
+            "
+          >
+            <label style="color: grey; font-size: small">Activo</label>
+            <div class="form-check form-switch" style="margin-top: 0.3rem">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                formControlName="active"
+                [ngClass]="{ 'is-invalid': submitted && f.active.errors }"
+                (change)="activeToggle()"
+              />
+              <label class="form-check-label" for="Active">{{
+                activeLabel
+              }}</label>
+            </div>
+            <div *ngIf="submitted && f.active.errors" class="invalid-feedback">
+              <div *ngIf="f.active.errors.required">Activo es obligatorio</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr />
+      <div class="row">
+        <div class="form-group">
+          <div style="float: right">
+            <button [disabled]="loading" class="btn btn-primary me-2">
+              <span
+                *ngIf="loading"
+                class="spinner-border spinner-border-sm mr-1"
+              ></span>
+              Guardar
+            </button>
+            <button class="btn btn-secondary" routerLink="/forum">
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

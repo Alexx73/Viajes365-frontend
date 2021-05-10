@@ -1,7 +1,7 @@
-import { FormGroup } from "@angular/forms";
-import { FilterRequest } from "./filterrequest.interface";
+import { FormGroup } from '@angular/forms';
+import { FilterRequest } from './filterrequest.interface';
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 10;
 
 export class PaginationControls {
   // -- paginated
@@ -12,16 +12,15 @@ export class PaginationControls {
   arrayvalueitemsperpage!: string[];
   pagesize!: number;
 
-
   filterRequest: FilterRequest = {
     object: {},
     pageNumber: 0,
-    pageSize: PAGE_SIZE
+    pageSize: PAGE_SIZE,
   };
 
   // -- end paginated
 
-  constructor() { }
+  constructor() {}
 
   initPaginated() {
     this.pagesize = PAGE_SIZE;

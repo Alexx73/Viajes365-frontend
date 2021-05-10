@@ -21,6 +21,7 @@ var navbar_component_1 = require("./_components/navbar.component");
 var terms_and_conditions_component_1 = require("./home/terms-and-conditions/terms-and-conditions.component");
 var apiclima_component_1 = require("./_components/apiclima.component");
 var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
+var ngx_filesize_1 = require("ngx-filesize");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -32,7 +33,8 @@ var AppModule = /** @class */ (function () {
                 http_1.HttpClientModule,
                 app_routing_module_1.AppRoutingModule,
                 forms_1.FormsModule,
-                ng_bootstrap_1.NgbModule
+                ng_bootstrap_1.NgbModule,
+                ngx_filesize_1.NgxFilesizeModule,
             ],
             declarations: [
                 app_component_1.AppComponent,
@@ -40,7 +42,7 @@ var AppModule = /** @class */ (function () {
                 home_1.HomeComponent,
                 navbar_component_1.NavbarComponent,
                 terms_and_conditions_component_1.TermsAndConditionsComponent,
-                apiclima_component_1.ApiclimaComponent
+                apiclima_component_1.ApiclimaComponent,
             ],
             providers: [
                 { provide: http_1.HTTP_INTERCEPTORS, useClass: jwt_interceptor_1.JwtInterceptor, multi: true },
@@ -52,4 +54,3 @@ var AppModule = /** @class */ (function () {
     return AppModule;
 }());
 exports.AppModule = AppModule;
-;

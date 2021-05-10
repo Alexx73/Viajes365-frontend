@@ -1,0 +1,117 @@
+<div class="p-4">
+  <div class="container" style="
+      background-color: rgba(255, 255, 255, 0.4);
+      border-radius: 4px;
+      padding: 10px 10px;
+      box-shadow: 0 0 25px -6px rgba(0, 0, 0, 0.9);
+    ">
+    <h4>
+      <i class="bi-person-lines-fill" style="color: black; margin-right: 8px"></i>Comentarios acerca de: <strong>{{
+        currentTopic?.name }}</strong>
+    </h4>
+    <hr />
+    <!-- <a routerLink="../add" class="btn btn-sm btn-success mb-2">Agregar Usuario</a> -->
+
+    <!-- CABECERA PAGINADO -->
+    <div class="row">
+      <div class="col text-center">
+        <label>Items por página: </label>
+        <select [(ngModel)]="pagesize" (change)="getPage(1)">
+          <option *ngFor="let item of arrayvalueitemsperpage" [value]="item">
+            {{ item }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <!-- FIN CABECERA PAGINADO -->
+
+    <div style="overflow-x: auto">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th style="width: 50%">Comentario</th>
+            <th style="width: 10%">Autor</th>
+            <th style="width: 5%">Status</th>
+            <th style="width: 5%">Activo</th>
+            <th style="width: 20%">Publicado</th>
+            <th style="width: 10%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="
+              let comment of commentsCollection
+                | paginate
+                  : {
+                      itemsPerPage: pagesize,
+                      currentPage: actualpage,
+                      totalItems: totalRegister
+                    }
+            ">
+            <td>
+              <div [innerHtml]="comment.body"></div>
+            </td>
+            <td>{{ comment.user.firstName }}, {{ comment.user.lastName }}</td>
+            <td>{{ comment.status }}</td>
+            <td>{{ comment.active ? "Sí" : "No" }}</td>
+            <td>{{ comment.created | date: "EEEE d 'de' MMMM y HH:mm:ss":"-0600":"es" }}</td>
+            <td style="white-space: nowrap">
+              <!-- <a
+                routerLink="../edit/{{ comment.commentId }}"
+                class="btn btn-sm btn-primary mr-1"
+                ><i
+                  class="bi-pencil-fill"
+                  style="color: white; margin-right: 8px"
+                ></i
+                >Editar</a
+              > -->
+              <button *ngIf="isAdmin" (click)="deleteComment(comment.commentId)"
+                class="btn btn-sm btn-danger btn-delete-comment" [disabled]="comment.isDeleting">
+                <span *ngIf="comment.isDeleting" class="spinner-border spinner-border-sm"></span>
+                <span *ngIf="!comment.isDeleting"><i class="bi-trash-fill"
+                    style="color: white; margin-right: 8px"></i>Borrar</span>
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="!commentsCollection">
+            <td colspan="4" class="text-center">
+              <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span colspan="5" class="align-left">
+                <strong class="small">
+                  Total de Registros: {{ page?.totalElements }} | Página
+                  {{ page?.pageNumber }} de {{ page?.totalPages }}
+                </strong>
+              </span>
+            </td>
+            <td colspan="7" class="text-center">
+              <span>
+                <pagination-controls (pageChange)="getPage($event)" previousLabel="" nextLabel="">
+                </pagination-controls>
+              </span>
+            </td>
+
+            <!-- <pagination-controls (pageChange)="getPage($event)" autoHide="false" responsive="true" previousLabel=""
+                nextLabel=""> -->
+          </tr>
+          <tr>
+            <td colspan="12">
+              <div style="float: right">
+                <button [disabled]="loading" class="btn btn-primary me-2"
+                  routerLink="/forum/comment-editor/{{ currentTopic.topicId }}">
+                  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                  <i class="bi-pencil-square" style="color: white; margin-right: 8px"></i>Comentar
+                </button>
+                <button class="btn btn-secondary" routerLink="/forum">
+                  <i class="bi-backspace-fill" style="color: white; margin-right: 8px"></i>Volver
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

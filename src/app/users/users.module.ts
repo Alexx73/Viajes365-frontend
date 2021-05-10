@@ -9,18 +9,18 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    UsersRoutingModule,
-    NgxPaginationModule,
-    FormsModule,
-    ImageCropperModule
-  ],
   declarations: [
     LayoutComponent,
     ListComponent,
     AddEditComponent
-  ]
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    UsersRoutingModule,
+    NgxPaginationModule,
+    ImageCropperModule
+  ],
 })
 export class UsersModule { }

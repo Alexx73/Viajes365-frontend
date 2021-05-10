@@ -1,34 +1,37 @@
 <!-- <div class="header_toggle"> <i class='bi bi-grip-vertical' id="header-toggle"></i> </div> -->
 
+<!-- CABECERA PAGINADO -->
+<div class="row">
+  <div class="col text-center">
+    <label right="true">Items: </label>
+    <select [(ngModel)]="pagesize" (change)="getPage(1)">
+      <option *ngFor="let item of arrayvalueitemsperpage" [value]="item">{{ item }}</option>
+    </select>
+    <pagination-controls (pageChange)="getPage($event)" previousLabel="" nextLabel="">
+    </pagination-controls> <!-- estos controles no funcionan aca aun no se porque -->
+  </div>
+
+</div>
+<!-- FIN CABECERA PAGINADO -->
+
 <div class="card-group col-sm-12 col-md-12 col-lg-12">
-  <div class="card">
-    <img src="assets/images/card_usuarios.jpg" class="card-img-top" alt="...">
+  <div class="card" *ngFor="let card of cardsCollection">
+    <img src="{{card.image}}" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Usuarios</h5>
-      <p class="card-text">Altas, bajas y modificaciones de usuarios. Ponga a un molesto del foro en pausa
-        desactivandolo.</p>
-      <a routerLink="/users/list" routerLinkActive="active" class="btn btn-success"><i class="bi-pencil-square"
-          style="color: white; margin-right: 8px;"></i>Editar Usuarios</a>
-    </div>
-  </div>
-  <div class="card">
-    <img src="assets/images/card_tours.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 cclass="card-title">Tours</h5>
-      <p class="card-text">Altas bajas y modificaciones de recorridos. Tu publico merece la mejor info
-        actualizada.
-      </p>
-      <a href="#" class="btn btn-success"><i class="bi-pencil-square"
-          style="color: white; margin-right: 8px;"></i>Editar Tours</a>
-    </div>
-  </div>
-  <div class="card">
-    <img src="assets/images/card_clima.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Clima</h5>
-      <p class="card-text">Ajusta tus historicos de consultas automaticas del servicio de clima.</p>
-      <a href="#" class="btn btn-success"><i class="bi-pencil-square"
-          style="color: white; margin-right: 8px;"></i>Editar Climas</a>
+      <h5 class="card-title">{{ card.title }}</h5>
+      <p class="card-text">{{ card.text }}</p>
+      <a routerLink="{{card.route}}" routerLinkActive="card.route" class="btn btn-success"><i class="bi-pencil-square"
+          style="color: white; margin-right: 8px;"></i>{{ card.buttontext }}</a>
     </div>
   </div>
 </div>
+
+<!-- PIE DE PAGINADO -->
+<div class="col-12 mt-3 d-flex justify-content-end">
+  <!-- <label left="true">
+  <b>Total: {{totalRegister}}</b>
+</label> -->
+  <pagination-controls (pageChange)="getPage($event)" previousLabel="" nextLabel="">
+  </pagination-controls> <!-- estos controles no funcionan aca aun no se porque -->
+</div>
+<!-- FIN PIE DE PAGINADO -->

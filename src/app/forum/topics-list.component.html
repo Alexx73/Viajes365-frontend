@@ -1,0 +1,126 @@
+<div class="p-4">
+  <div class="container" style="
+      background-color: rgba(255, 255, 255, 0.4);
+      border-radius: 4px;
+      padding: 10px 10px;
+      box-shadow: 0 0 25px -6px rgba(0, 0, 0, 0.9);
+    ">
+    <div class="row">
+      <div class="col-10">
+        <h4>
+          <i class="bi-megaphone-fill" style="color: black; margin-right: 8px"></i>Foro de Usuarios
+        </h4>
+      </div>
+
+      <div class="col-2 text-center">
+        <a *ngIf="isAdmin" routerLink="/forum/topiceditor/0" class="btn btn-sm btn-secondary mr-1">
+          <i class="bi-plus-circle" style="color: white; margin-right: 8px"></i>Nuevo
+        </a>
+      </div>
+    </div>
+    <hr />
+    <!-- <a routerLink="../add" class="btn btn-sm btn-success mb-2">Agregar Usuario</a> -->
+
+    <!-- CABECERA PAGINADO -->
+    <div class="row">
+      <div class="col text-center">
+        <label>Items por página: </label>
+        <select [(ngModel)]="pagesize" (change)="getPage(1)">
+          <option *ngFor="let item of arrayvalueitemsperpage" [value]="item">
+            {{ item }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <!-- FIN CABECERA PAGINADO -->
+
+    <div style="overflow-x: auto">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th style="width: 15%">Título</th>
+            <th style="width: 15%">Autor</th>
+            <th style="width: 30%">Resumen</th>
+            <th style="width: 5%">Status</th>
+            <th style="width: 5%">Destacado</th>
+            <th style="width: 5%">Activo</th>
+            <th style="width: 25%">Publicado</th>
+            <th style="width: 10%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="
+              let topic of topicsCollection
+                | paginate
+                  : {
+                      itemsPerPage: pagesize,
+                      currentPage: actualpage,
+                      totalItems: totalRegister
+                    }
+            ">
+            <td>{{ topic.name }}</td>
+            <td>{{ topic.user.firstName }}, {{ topic.user.lastName }}</td>
+            <td>{{ topic.summary }}</td>
+            <td>{{ topic.status }}</td>
+            <td>{{ topic.pinned ? "Si" : "No" }}</td>
+            <td>{{ topic.active ? "Si" : "No" }}</td>
+            <td>{{ topic.created | date: "full":"-0300":"es" }}</td>
+            <td style="white-space: nowrap">
+              <a routerLink="../comments/{{ topic.topicId }}" class="btn btn-sm btn-success mr-1"><i class="bi-eye-fill"
+                  style="color: white; margin-right: 8px"></i>Ver</a>
+              <a *ngIf="isAdmin" routerLink="/forum/topiceditor/{{ topic.topicId }}"
+                class="btn btn-sm btn-secondary mr-1"><i class="bi-pencil-fill"
+                  style="color: white; margin-right: 8px"></i>Editar</a>
+              <a *ngIf="isAdmin" (click)="deleteTopic(topic.topicId)" class="btn btn-sm btn-danger mr-1"><i
+                  class="bi-trash-fill" style="color: white; margin-right: 8px"></i>Borrar</a>
+              <!-- <button
+                (click)="deleteTopic(topic.topicId)"
+                class="btn btn-sm btn-danger btn-delete-topic"
+                [disabled]="topic.isDeleting"
+                *ngIf="topic.topicId > 1"
+              >
+                <span
+                  *ngIf="topic.isDeleting"
+                  class="spinner-border spinner-border-sm"
+                ></span>
+                <span *ngIf="!topic.isDeleting"
+                  ><i
+                    class="bi-trash-fill"
+                    style="color: white; margin-right: 8px"
+                  ></i
+                  >Borrar</span
+                >
+              </button> -->
+            </td>
+          </tr>
+          <tr *ngIf="!topicsCollection">
+            <td colspan="4" class="text-center">
+              <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4" class="align-left">
+              <span>
+                <strong class="small">
+                  Total de Registros: {{ page?.totalElements }} | Página
+                  {{ page?.pageNumber }} de {{ page?.totalPages }}
+                </strong>
+              </span>
+            </td>
+            <td colspan="8" class="text-center">
+              <span>
+                <pagination-controls (pageChange)="getPage($event)" previousLabel="" nextLabel="">
+                </pagination-controls>
+              </span>
+            </td>
+
+            <td>
+              <!-- <pagination-controls (pageChange)="getPage($event)" autoHide="false" responsive="true" previousLabel=""
+                nextLabel=""> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

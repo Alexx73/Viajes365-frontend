@@ -24,13 +24,13 @@
       <div class="row m-2">
         <div class="form-group">
           <div class="text-center col">
-            <div class="row" [hidden]="currentUser!.userId > 1 ? false : true">
+            <div class="row" [hidden]="id > 1 ? false : true">
               <div class="text-center col">
                 <h6>Recorte la Imagen</h6>
                 <image-cropper
                   [imageChangedEvent]="imageChangedEvent"
                   [maintainAspectRatio]="true"
-                  imageURL="../../assets/images/user-avatar.png"
+                  imageURL=""
                   [aspectRatio]="4 / 4"
                   [resizeToWidth]="150"
                   format="png"
@@ -47,10 +47,7 @@
           <div class="col g-4">
             <div class="text-center col m-2">
               <div class="row">
-                <div
-                  class="col"
-                  [hidden]="currentUser!.userId > 1 ? false : true"
-                >
+                <div class="col" [hidden]="id > 1 ? false : true">
                   <h6>Vista Previa</h6>
                   <img
                     *ngIf="croppedImage"
@@ -86,7 +83,7 @@
               </div>
             </div>
             <input
-              [hidden]="currentUser!.userId > 1 ? false : true"
+              [hidden]="id > 1 ? false : true"
               type="file"
               (change)="fileChangeEvent($event)"
               formControlName="fileName"
@@ -318,5 +315,4 @@
       </div>
     </form>
   </div>
-  {{ form.value | json }}
 </div>
