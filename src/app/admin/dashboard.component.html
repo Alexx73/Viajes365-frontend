@@ -1,30 +1,41 @@
 <!-- <div class="header_toggle"> <i class='bi bi-grip-vertical' id="header-toggle"></i> </div> -->
 
 <!-- CABECERA PAGINADO -->
-<div class="row">
+<!-- estos controles no funcionan aca aun no se porque -->
+<!-- <div class="row">
   <div class="col text-center">
     <label right="true">Items: </label>
     <select [(ngModel)]="pagesize" (change)="getPage(1)">
       <option *ngFor="let item of arrayvalueitemsperpage" [value]="item">{{ item }}</option>
     </select>
     <pagination-controls (pageChange)="getPage($event)" previousLabel="" nextLabel="">
-    </pagination-controls> <!-- estos controles no funcionan aca aun no se porque -->
+    </pagination-controls> 
   </div>
-
-</div>
+  
+</div> -->
 <!-- FIN CABECERA PAGINADO -->
 
-<div class="card-group col-sm-12 col-md-12 col-lg-12">
-  <div class="card" *ngFor="let card of cardsCollection">
-    <img src="{{card.image}}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{ card.title }}</h5>
-      <p class="card-text">{{ card.text }}</p>
-      <a routerLink="{{card.route}}" routerLinkActive="card.route" class="btn btn-success"><i class="bi-pencil-square"
-          style="color: white; margin-right: 8px;"></i>{{ card.buttontext }}</a>
+<br>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col" *ngFor="let card of cardsCollection">
+    <div class="card" style="width: 18rem;">
+      <img src="{{card.image}}" class="card-img-top" alt="..." style="padding: 25px;">
+      <div class="card-body">
+        <h5 class="card-title">{{ card.title }}</h5>
+        <p class="card-text">{{ card.text }}</p>
+        <div class="d-grid gap-1">
+          <a routerLink="{{card.route}}" routerLinkActive="card.route" class="btn btn-success"><i class="bi-pencil-square"
+            style="color: white; margin-right: 8px;"></i>{{ card.buttontext }}</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+
+
+
 
 <!-- PIE DE PAGINADO -->
 <div class="col-12 mt-3 d-flex justify-content-end">

@@ -9,6 +9,7 @@ import {
 import { first } from 'rxjs/operators';
 
 import { UserService, AlertService } from '@app/_services';
+import { environment } from '@environments/environment';
 import { MustMatch } from '@app/_helpers';
 import { Role, User } from '@app/_models';
 import { RoleService } from '@app/_services/role.service';
@@ -18,6 +19,7 @@ import { FileUploadService } from '@app/_services/fileupload.service';
 import { FileSizePipe } from 'ngx-filesize';
 
 const fileSizePipe = new FileSizePipe();
+const baseUrl = `${environment.baseUrl}/`;
 @Component({ templateUrl: 'add-edit.component.html' })
 export class AddEditComponent implements OnInit {
   imageChangedEvent: any = '';
@@ -233,6 +235,6 @@ export class AddEditComponent implements OnInit {
   refreshCurrentImage(relativePath: string): void {
     // Base Url must be in the environment
     this.currentImagePath =
-      'http://localhost:5000/' + relativePath + '?random+=' + Math.random();
+      baseUrl + relativePath + '?random+=' + Math.random();
   }
 }

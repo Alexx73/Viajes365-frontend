@@ -9,12 +9,14 @@ exports.__esModule = true;
 exports.NavbarComponent = void 0;
 var core_1 = require("@angular/core");
 var NavbarComponent = /** @class */ (function () {
-    function NavbarComponent(accountService) {
+    function NavbarComponent(accountService, chatService) {
         var _this = this;
         this.accountService = accountService;
-        this.accountService.user.subscribe(function (x) { return _this.user = x; });
+        this.chatService = chatService;
+        this.accountService.user.subscribe(function (x) { return (_this.user = x); });
     }
     NavbarComponent.prototype.logout = function () {
+        this.chatService.clearActualChatUser();
         this.accountService.logout();
     };
     NavbarComponent = __decorate([

@@ -1,0 +1,36 @@
+<div *ngIf="!isEmpty" class="container" style="
+      background-color: rgb(238, 238, 238);
+      border-radius: 1px;
+      padding: 0px;
+      box-shadow: 0 0 25px -6px rgba(0, 0, 0, 1.9);
+    ">
+    <ul class="list-group" #scrollBottom>
+        <li *ngFor="let message of messagesCollection"
+            class="list-group-item list-group-item-info list-group-item-action flex-column align-items-start"
+            [ngClass]="{'active': message.isResponse}">
+            <div *ngIf="message.isResponse">
+                <div class="d-flex w-100 justify-content-between">
+                    <small></small>
+                    <strong class="mb-1">{{message.message}}</strong>
+                </div>
+                <p style="
+                display:-webkit-flex;
+                display:flex;
+                list-style-type:none;
+                padding:0;
+                justify-content:flex-end;">{{message.status}} {{ message.created | date: "medium":"-0600":"es" }}</p>
+            </div>
+            <div *ngIf="!message.isResponse">
+                <div class="d-flex w-100 justify-content-between">
+                    <strong class="mb-1">{{message.message}}</strong>
+                    <small>{{ message.created | date: "medium":"-0600":"es" }}</small>
+                </div>
+                <p>{{message.status}}</p>
+            </div>
+
+        </li>
+    </ul>
+</div>
+<div *ngIf="isEmpty" class="text-center">
+    <img src="../../assets/images/sin_mensajes.png" class="card-img-top">
+</div>

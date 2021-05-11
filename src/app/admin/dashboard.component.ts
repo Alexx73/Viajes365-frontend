@@ -19,67 +19,74 @@ export class DashboardComponent implements OnInit {
   cards = [
     {
       title: 'Usuarios',
-      image: 'assets/images/card_usuarios.jpg',
+      image: 'assets/images/dashboard-images/user.svg',
       text: 'Altas, bajas y modificaciones de usuarios. Ponga a un molesto del foro en pausa desactivandolo.',
       buttontext: 'Editar Usuarios',
       route: '/users/list'
     },
     {
       title: 'Tours',
-      image: 'assets/images/card_tours.jpg',
-      text: 'Altas bajas y modificaciones de recorridos. Tu publico merece la mejor info actualizada.',
+      image: 'assets/images/dashboard-images/tour.svg',
+      text: 'Altas bajas y modificaciones de recorridos. Crea los tours mas atractivos e inolvidables para tu publico.',
       buttontext: 'Editar Tours',
       route: '/tours'
     },
     {
       title: 'Atracciones',
-      image: 'assets/images/card_tours.jpg',
-      text: 'Altas bajas y modificaciones de atracciones. Tu publico merece la mejor info actualizada.',
+      image: 'assets/images/dashboard-images/attraction.svg',
+      text: 'Altas bajas y modificaciones de atracciones. Publicita las mejores atracciones de cada localidad.',
       buttontext: 'Editar Atracciones',
       route: '/attractions'
     },
     {
       title: 'Ciudades',
-      image: 'assets/images/card_tours.jpg',
-      text: 'Altas bajas y modificaciones de ciudades. Tu publico merece la mejor info actualizada.',
+      image: 'assets/images/dashboard-images/city.svg',
+      text: 'Altas bajas y modificaciones de ciudades. Luego podras consultar el clima de cada una.',
       buttontext: 'Editar Ciudades',
       route: '/cities'
     },
     {
       title: 'Galería',
-      image: 'assets/images/card_tours.jpg',
-      text: 'Altas bajas y modificaciones de fotos. Tu publico merece la mejores imagenes.',
+      image: 'assets/images/dashboard-images/galery.svg',
+      text: 'Altas bajas y modificaciones de fotos. Una imagen dice mas que mil palabras sin dudas.',
       buttontext: 'Editar Galería',
       route: '/photos'
     },
     {
       title: 'Roles',
-      image: 'assets/images/card_tours.jpg',
-      text: 'Altas bajas y modificaciones de roles del sistema. El orden primero.',
+      image: 'assets/images/dashboard-images/role.svg',
+      text: 'Altas bajas y modificaciones de roles del sistema. El orden primero y los roles segundo.',
       buttontext: 'Editar Roles',
       route: '/roles'
     },
     {
       title: 'Locaciones',
-      image: 'assets/images/card_tours.jpg',
+      image: 'assets/images/dashboard-images/location.svg',
       text: 'Altas bajas y modificaciones de locaciones. Tu publico merece la mejor info actualizada.',
       buttontext: 'Editar Locaciones',
       route: '/locations'
     },
     {
       title: 'Chat',
-      image: 'assets/images/card_tours.jpg',
-      text: 'Altas bajas y modificaciones de chats. Tu publico merece la mejor info actualizada.',
+      image: 'assets/images/dashboard-images/chat.svg',
+      text: 'Altas bajas y modificaciones de chats. Responde las preguntas que te han realizado.',
       buttontext: 'Editar Chats',
       route: '/chats'
     },
     {
       title: 'Clima',
-      image: 'assets/images/card_clima.jpg',
-      text: 'Ajusta tus historicos de consultas automaticas del servicio de clima.',
+      image: 'assets/images/dashboard-images/weather.svg',
+      text: 'Ajusta tus historicos de consultas automaticas del servicio de clima desde aqui.',
       buttontext: 'Editar Climas',
       route: '/weathers'
     },
+    {
+      title: 'Foro',
+      image: 'assets/images/dashboard-images/foro.svg',
+      text: 'Ajusta tus historicos de consultas automaticas del servicio de clima desde aqui..',
+      buttontext: 'Editar Topics',
+      route: '/forum/topiclist'
+    }
   ];
 
   constructor(private alertService: AlertService) { }

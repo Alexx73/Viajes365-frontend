@@ -3,4 +3,5 @@ export class City {
     code!: number;
     name!: string;
     active!: boolean;
+    isDeleting = false;
 }

@@ -12,9 +12,12 @@ export class User {
   role!: Role;
   photoId!: number;
   photo!: Photo;
-  isDeleting = false;
   token!: string;
   active!: boolean;
   returnUrl!: string;
   TermsAndConditionsChecked!: boolean;
+  // front members
+  isDeleting = false;
+  nick = '';
+  chatEmail = '';
 }

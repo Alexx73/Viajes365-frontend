@@ -1,0 +1,200 @@
+<div class="p-4">
+    <div class="container" style="
+        background-color: rgba(255, 255, 255, 0.4);
+        border-radius: 4px;
+        padding: 10px 10px;
+        box-shadow: 0 0 25px -6px rgba(0, 0, 0, 0.9);
+      ">
+        <h4>
+            <i class="bi-person-check-fill" style="color: black; margin-right: 8px"></i>Editar Perfil
+        </h4>
+        <hr />
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="row m-2">
+                <div class="form-group">
+                    <div class="text-center col">
+                        <div class="row" [hidden]="id > 1 ? false : true">
+                            <div class="text-center col">
+                                <h6>Recorte la Imagen</h6>
+                                <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+                                    imageURL="" [aspectRatio]="4 / 4" [resizeToWidth]="150" format="png"
+                                    (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                                    (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+                                </image-cropper>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col g-4">
+                        <div class="text-center col m-2">
+                            <div class="row">
+                                <div class="col" [hidden]="id > 1 ? false : true">
+                                    <h6>Vista Previa</h6>
+                                    <img *ngIf="croppedImage" [src]="croppedImage" width="150px" height="150px" />
+                                </div>
+                                <div class="col" *ngIf="percentCompleted > 0">
+                                    Subiendo {{ percentCompleted }}%
+                                    <!-- Progress Bar -->
+                                    <div class="progress form-group">
+                                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                                            [style.width.%]="percentCompleted"></div>
+                                    </div>
+                                    <div *ngIf="isSingleUploaded" class="success">
+                                        <p>Imagen subida con éxito.</p>
+                                        <b>{{ urlAfterUpload }}</b>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <h6>Imagen Actual</h6>
+                                    <img *ngIf="currentUser" src="{{ currentImagePath }}" width="150px"
+                                        height="150px" />
+                                </div>
+                            </div>
+                        </div>
+                        <input [hidden]="id > 1 ? false : true" type="file" (change)="fileChangeEvent($event)"
+                            formControlName="fileName" class="form-control" accept=".png, .jpg"
+                            [ngClass]="{ 'is-invalid': submitted && f.fileName.errors }" id="file" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col">
+                    <input type="hidden" formControlName="userId" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.userId.errors }" />
+                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                        <div *ngIf="f.firstName.errors.required">UserId es obligatorio</div>
+                    </div>
+                </div>
+                <div class="form-group col">
+                    <input type="hidden" formControlName="roleId" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.roleId.errors }" />
+                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                        <div *ngIf="f.firstName.errors.required">RoleId es obligatorio</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-2">
+                <div class="form-group col">
+                    <div class="form-floating">
+                        <input type="text" formControlName="firstName" class="form-control" placeholder="Daniela"
+                            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" id="firstName" />
+                        <label for="firstName">Nombres</label>
+                        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                            <div *ngIf="f.firstName.errors.required">
+                                Nombres es obligatorio
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col">
+                    <div class="form-floating">
+                        <input type="text" formControlName="lastName" class="form-control" placeholder="Díaz"
+                            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" id="lastName" />
+                        <label for="lastName">Apellidos</label>
+                        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                            <div *ngIf="f.lastName.errors.required">
+                                Apellidos es obligatorio
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row g-3">
+                <div class="form-group col">
+                    <div class="form-floating">
+                        <input type="text" formControlName="email" class="form-control" placeholder="email@net.com"
+                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" id="email" />
+                        <label for="email">Email</label>
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">Email es obligatorio</div>
+                            <div *ngIf="f.email.errors.email">
+                                Email debe ser una dirección válida
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col">
+                    <div style="
+                display: block;
+                background-color: rgba(255, 255, 255);
+                border-radius: 4px;
+                padding-left: 0.5rem;
+                padding-top: 0.2rem;
+              ">
+                        <label style="color: grey; font-size: small">Activo</label>
+                        <div class="form-check form-switch" style="margin-top: 0.3rem">
+                            <input class="form-check-input" type="checkbox" formControlName="active"
+                                [ngClass]="{ 'is-invalid': submitted && f.active.errors }" (change)="activeToggle()" />
+                            <label class="form-check-label" for="Active">{{
+                                activeLabel
+                                }}</label>
+                        </div>
+                        <div *ngIf="submitted && f.active.errors" class="invalid-feedback">
+                            <div *ngIf="f.active.errors.required">Activo es obligatorio</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!isAddMode">
+                <h5 class="pt-3">
+                    <i class="bi-key" style="color: black; margin-right: 8px"></i>Cambio
+                    de contraseña
+                </h5>
+                <p>
+                    <i class="bi-lightbulb" style="color: black; margin-right: 8px"></i>Deje en blanco para mantener la
+                    misma
+                </p>
+            </div>
+            <div class="row">
+                <div class="form-group col">
+                    <div class="form-floating">
+                        <input type="password" formControlName="password" class="form-control" id="password"
+                            placeholder="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                        <label for="password">Contraseña</label>
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">
+                                La contraseña es obligatoria
+                            </div>
+                            <div *ngIf="f.password.errors.minlength">
+                                La clave debe tener al menos 6 caracteres
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col">
+                    <div class="form-floating">
+                        <input type="password" formControlName="confirmPassword" class="form-control"
+                            id="confirmPassword" placeholder="confirmPassword" [ngClass]="{
+                  'is-invalid': submitted && f.confirmPassword.errors
+                }" />
+                        <label for="confirmPassword">Confirmación de Contraseña</label>
+                        <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                            <div *ngIf="f.confirmPassword.errors.required">
+                                La confirmación de contraseña es obligatoria
+                            </div>
+                            <div *ngIf="f.confirmPassword.errors.mustMatch">
+                                La contraseña y su confirmación deben ser iguales
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="form-group">
+                    <div style="float: right">
+                        <button [disabled]="loading" class="btn btn-primary me-2">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                            Guardar
+                        </button>
+                        <button class="btn btn-secondary" routerLink="/">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,3 +1,22 @@
-<p>chats-list works!</p>
-<a routerLink="../chat-editor/0" class="btn btn-sm btn-primary mr-1"><i class="bi-pencil-fill"
-        style="color: white; margin-right: 8px"></i>Editar</a>
+<div class="container" style="
+      background-color: rgb(238, 238, 238);
+      border-radius: 3px;
+      padding: 0px 0px;
+      box-shadow: 0 0 25px -6px rgba(0, 0, 0, 1.9);
+    ">
+        <ul class="list-group">
+                <li (click)="activateClass(chat)" *ngFor="let chat of chatCollection" href="#"
+                        class="list-group-item list-group-item-success list-group-item-action flex-column align-items-start"
+                        [ngClass]="{'active': chat.isSelected}">
+                        <div class="d-flex w-100 justify-content-between">
+                                <strong class="mb-1">{{chat.nick}}</strong>
+                                <small>{{ chat.created | date: "medium":"-0600":"es" }}</small>
+
+                        </div>
+                        <p>{{chat.email}}</p>
+                </li>
+        </ul>
+</div>
+
+<!-- <a routerLink="../chat-editor/0" class="btn btn-sm btn-primary mr-1"><i class="bi-pencil-fill"
+        style="color: white; margin-right: 8px"></i>Editar</a> -->

@@ -4,6 +4,7 @@ import { ToursEditorComponent } from './tours-editor.component';
 import { ToursListComponent } from './tours-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToursRoutingModule } from './tours-routing.module';
+import { UnderConstructionModule } from '@app/under-construction/under-construction.module';
 
 @NgModule({
   declarations: [ToursEditorComponent, ToursListComponent],
@@ -12,6 +13,7 @@ import { ToursRoutingModule } from './tours-routing.module';
     FormsModule,
     ReactiveFormsModule,
     ToursRoutingModule,
-  ]
+    UnderConstructionModule,
+  ],
 })
-export class ToursModule { }
+export class ToursModule {}

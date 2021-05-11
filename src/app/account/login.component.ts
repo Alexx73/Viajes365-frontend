@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '@app/_models';
 import { AlertService } from '@app/_services';
 import { AccountService } from '@app/_services';
+import { ChatService } from '@app/_services/chat.service';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -17,21 +18,23 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
+    private chatService: ChatService,
     private router: Router,
     private accountService: AccountService,
     private alertService: AlertService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.form.controls; }
+  get f() {
+    return this.form.controls;
+  }
 
   onSubmit(): void {
     this.submitted = true;
@@ -45,19 +48,24 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
-    this.accountService.login(this.f.username.value, this.f.password.value)
+    this.accountService
+      .login(this.f.username.value, this.f.password.value)
       .pipe(first())
       .subscribe({
         next: (u: User) => {
+          // logged user goes directly to chatroom
+          u.chatEmail = u.email;
+          u.nick = u.firstName + ' ' + u.lastName;
+          this.chatService.setActualChatUser(u);
           // get return url from query parameters or default to home page
           const returnUrl = u.returnUrl || '/';
           //console.log(u.returnUrl);
           this.router.navigateByUrl(returnUrl);
         },
-        error: error => {
+        error: () => {
           // this.alertService.error('Usuario y/o clave incorrectos');
           this.loading = false;
-        }
+        },
       });
   }
 }

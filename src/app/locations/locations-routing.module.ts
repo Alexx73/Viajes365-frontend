@@ -10,7 +10,13 @@ const routes: Routes = [
         path: 'city-editor/:id',
         component: LocationEditorComponent,
         pathMatch: 'full',
+    },
+    {
+        path: 'location-editor/:id',
+        component: LocationEditorComponent,
+        pathMatch: 'full',
     }
+
 
 ];
 

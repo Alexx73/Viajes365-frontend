@@ -1,3 +1,134 @@
-<p>locations-list works!</p>
-<a routerLink="../location-editor/0" class="btn btn-sm btn-primary mr-1"><i class="bi-pencil-fill"
-        style="color: white; margin-right: 8px"></i>Editar</a>
+<div class="p-4">
+        <div
+          class="container"
+          style="
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 4px;
+            padding: 10px 10px;
+            box-shadow: 0 0 25px -6px rgba(0, 0, 0, 0.9);
+          "
+        >
+          <div class="row">
+            <div class="col-10">
+              <h4>
+                <i class="bi-geo-alt-fill" style="color: black; margin-right: 8px"></i
+                >Localidades
+              </h4>
+            </div>
+      
+            <div class="col-2 text-center">
+              <a
+                *ngIf="isAdmin"
+                routerLink="../location-editor/0"
+                class="btn btn-sm btn-secondary mr-1"
+              >
+                <i class="bi-plus-circle" style="color: white; margin-right: 8px"></i
+                >Nuevo
+              </a>
+            </div>
+          </div>
+          <hr />
+          <!-- <a routerLink="../add" class="btn btn-sm btn-success mb-2">Agregar Usuario</a> -->
+      
+          <!-- CABECERA PAGINADO -->
+          <div class="row">
+            <div class="col text-center">
+              <label>Items por página: </label>
+              <select [(ngModel)]="pagesize" (change)="getPage(1)">
+                <option *ngFor="let item of arrayvalueitemsperpage" [value]="item">
+                  {{ item }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <!-- FIN CABECERA PAGINADO -->
+      
+          <div style="overflow-x: auto">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th style="width: 10%">Nombre</th>
+                  <th style="width: 20%">Direccion</th>
+                  <th style="width: 10%">Ciudad</th>
+                  <th style="width: 10%">Nota</th>
+                  <th style="width: 5%">Activo</th>
+                  <th style="width: 10%"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="
+                    let location of locationsCollection
+                      | paginate
+                        : {
+                            itemsPerPage: pagesize,
+                            currentPage: actualpage,
+                            totalItems: totalRegister
+                          }
+                  "
+                >
+                  <td>{{ location.locationName }}</td>
+                  <td>{{ location.fullAddress }}</td>
+                  <td>{{ location.cityId }}</td>
+                  <td>{{ location.note }}</td>
+                  <td>{{ location.active ? "Si" : "No" }}</td>
+                  <td style="white-space: nowrap">
+                    <a
+                      *ngIf="isAdmin"
+                      routerLink="../location-editor/{{ location.locationId }}"
+                      class="btn btn-sm btn-secondary mr-1"
+                      ><i
+                        class="bi-pencil-fill"
+                        style="color: white; margin-right: 8px"
+                      ></i
+                      >Editar</a
+                    >
+                    <a
+                      *ngIf="isAdmin && location.locationId > 1"
+                      (click)="deleteLocation(location.locationId)"
+                      class="btn btn-sm btn-danger mr-1"
+                      ><i
+                        class="bi-trash-fill"
+                        style="color: white; margin-right: 8px"
+                      ></i
+                      >Borrar</a
+                    >
+                  </td>
+                </tr>
+                <tr *ngIf="!locationsCollection">
+                  <td colspan="4" class="text-center">
+                    <span
+                      class="spinner-border spinner-border-lg align-center"
+                    ></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="4" class="align-left">
+                    <span>
+                      <strong class="small">
+                        Total de Registros: {{ page?.totalElements }} | Página
+                        {{ page?.pageNumber }} de {{ page?.totalPages }}
+                      </strong>
+                    </span>
+                  </td>
+                  <td colspan="8" class="text-center">
+                    <span>
+                      <pagination-controls
+                        (pageChange)="getPage($event)"
+                        previousLabel=""
+                        nextLabel=""
+                      >
+                      </pagination-controls>
+                    </span>
+                  </td>
+      
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+
+

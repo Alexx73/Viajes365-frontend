@@ -1,1 +1,12 @@
-<p>chat-editor works!</p>
+<div class="container" style="
+  padding: 5px 5px;
+">
+
+  <div class="row">
+    <div class="col"><input [(ngModel)]="message" type="text" class="form-control"></div>
+    <div class="col-2"><button class="form-control btn-success" (click)="sendMessage()" [disabled]="loading"
+        class="btn btn-primary me-2">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>Enviar</button></div>
+  </div>
+
+</div>

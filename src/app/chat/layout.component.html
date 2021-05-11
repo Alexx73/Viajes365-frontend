@@ -1,0 +1,28 @@
+<div class="p-4">
+    <div class="container" style="
+      background-color: rgb(238, 238, 238);
+      border-radius: 4px;
+      padding: 10px 10px;
+      box-shadow: 0 0 25px -6px rgba(0, 0, 0, 0.9);
+    ">
+        <div
+            style="height: 500px; background: linear-gradient(rgb(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6) 99%), url(./assets/images/tile_pattern.jpg);">
+            <as-split direction="horizontal" unit="percent">
+                <as-split-area [size]="30">
+                    <app-chats-list></app-chats-list>
+                </as-split-area>
+                <as-split-area [size]="70" [minSize]=60 [maxSize]=75>
+                    <as-split direction="vertical">
+                        <as-split-area [size]="90">
+                            <app-chatmessages-list></app-chatmessages-list>
+                        </as-split-area>
+                        <as-split-area [size]="10" [minSize]=10 [maxSize]=30
+                            style="background-color: rgba(41, 59, 39, 0.7);">
+                            <app-chat-editor></app-chat-editor>
+                        </as-split-area>
+                    </as-split>
+                </as-split-area>
+            </as-split>
+        </div>
+    </div>
+</div>

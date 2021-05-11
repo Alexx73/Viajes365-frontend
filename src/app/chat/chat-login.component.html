@@ -1,0 +1,58 @@
+<div class="p-4">
+    <div class="container">
+        <div class="col-md-6 offset-md-3 mt-5">
+            <div class="card"
+                style="background-color: rgba(255, 255, 255, 0.4); box-shadow: 0 0 25px -6px rgba(0, 0, 0, 0.9);">
+                <h4 class="card-header cardtitle-custom"><i class="bi-chat-square-text-fill"
+                        style="color: black; margin-right: 8px;"></i>Ingresar al Chat</h4>
+                <div class="card-body">
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <div class="form-floating">
+                                <input type="text" formControlName="nick" class="form-control" id="nick"
+                                    placeholder="usuario" [ngClass]="{ 'is-invalid': submitted && f.nick.errors }" />
+                                <label for="nick">Apodo *</label>
+                                <div *ngIf="submitted && f.nick.errors" class="invalid-feedback">
+                                    <div *ngIf="f.nick.errors.required">Apodo para el chatroom es obligatorio</div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <div class="form-floating">
+                                <input type="email" formControlName="email" class="form-control" id="email"
+                                    placeholder="Correo de contacto"
+                                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                <label for="email">Correo de contacto *</label>
+                                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                    <div *ngIf="f.email.errors.required">El correo es obligatorio</div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col" style="float: left;"><small style="text-align: center;">
+                                    Una persona del staff atenderá tus
+                                    consultas oportunamente o puedes registrarte.</small></div>
+                            <div class="col" style="float: right;">
+                                <button [disabled]="loading" class="btn btn-primary me-2">
+                                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span><i
+                                        class="bi-unlock-fill" style="color: white; margin-right: 8px;"></i>
+                                    Ingresar
+                                </button>
+                                <button class="btn btn-secondary" routerLink="/account/register">
+                                    <i class="bi-pencil-square" style="color: white; margin-right: 8px;"></i>Registrarse
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+                </div>
+
+            </div> <!-- end card  -->
+
+        </div>
+    </div> <!-- end container  -->
+</div>

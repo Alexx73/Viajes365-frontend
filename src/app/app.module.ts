@@ -35,7 +35,6 @@ import { NgxFilesizeModule } from 'ngx-filesize';
     NavbarComponent,
     TermsAndConditionsComponent,
     ApiclimaComponent,
- 
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

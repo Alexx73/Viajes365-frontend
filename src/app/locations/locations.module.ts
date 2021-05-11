@@ -4,6 +4,8 @@ import { LocationsListComponent } from './locations-list.component';
 import { LocationEditorComponent } from './location-editor.component';
 import { LocationsRoutingModule } from './locations-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [LocationsListComponent, LocationEditorComponent, LocationEditorComponent],
@@ -12,6 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     LocationsRoutingModule,
+    NgxPaginationModule,
+    NgbModule
   ]
 })
 export class LocationsModule { }

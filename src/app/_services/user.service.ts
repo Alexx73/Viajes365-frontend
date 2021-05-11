@@ -2,7 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '@environments/environment';
-import { Photo, User } from '@app/_models';
+import { User } from '@app/_models';
 import { PaginatedResponse, SingleObjectResponse } from '@app/_rest';
 import { Observable } from 'rxjs';
 import { PhotoService } from './photo.service';

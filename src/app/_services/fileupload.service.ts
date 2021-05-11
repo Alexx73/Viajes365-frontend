@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from '@environments/environment';
 
-const url = 'http://localhost:5000/api/photos/uploadimage';
-// const url = "http://viajes365.azurewebsites.net/api/photos/uploadimage";
+const url = `${environment.apiUrl}/photos/uploadimage`;
 
 @Injectable({
   providedIn: 'root',

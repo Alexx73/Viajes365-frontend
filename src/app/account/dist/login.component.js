@@ -11,9 +11,9 @@ var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var operators_1 = require("rxjs/operators");
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(formBuilder, route, router, accountService, alertService) {
+    function LoginComponent(formBuilder, chatService, router, accountService, alertService) {
         this.formBuilder = formBuilder;
-        this.route = route;
+        this.chatService = chatService;
         this.router = router;
         this.accountService = accountService;
         this.alertService = alertService;
@@ -28,7 +28,9 @@ var LoginComponent = /** @class */ (function () {
     };
     Object.defineProperty(LoginComponent.prototype, "f", {
         // convenience getter for easy access to form fields
-        get: function () { return this.form.controls; },
+        get: function () {
+            return this.form.controls;
+        },
         enumerable: false,
         configurable: true
     });
@@ -42,16 +44,21 @@ var LoginComponent = /** @class */ (function () {
             return;
         }
         this.loading = true;
-        this.accountService.login(this.f.username.value, this.f.password.value)
+        this.accountService
+            .login(this.f.username.value, this.f.password.value)
             .pipe(operators_1.first())
             .subscribe({
             next: function (u) {
+                // logged user goes directly to chatroom
+                u.chatEmail = u.email;
+                u.nick = u.firstName + ' ' + u.lastName;
+                _this.chatService.setActualChatUser(u);
                 // get return url from query parameters or default to home page
                 var returnUrl = u.returnUrl || '/';
                 //console.log(u.returnUrl);
                 _this.router.navigateByUrl(returnUrl);
             },
-            error: function (error) {
+            error: function () {
                 // this.alertService.error('Usuario y/o clave incorrectos');
                 _this.loading = false;
             }
